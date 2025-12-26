@@ -1,12 +1,15 @@
 console.log("Snow script loaded!");
 const MAX_SNOWFLAKES = 200;
 const snowflakes = [];
+var showSnow = true;
 
 const createSnowflake = () => {
+    if (!showSnow) return;
     if (snowflakes.length >= MAX_SNOWFLAKES) return;
 
     const snowflake = document.createElement('div');
     snowflake.classList.add('snowflake');
+    snowflake.id = 'snowflake';
 
     const size = Math.random() * 4 + 5;
     snowflake.style.width = `${size}px`;
@@ -34,3 +37,12 @@ const createSnowflake = () => {
 };
 
 setInterval(createSnowflake, 100);
+
+const toggleSnowflake = () => {
+    showSnow = !showSnow;
+    document.querySelectorAll('.snowflake').forEach((el) => {
+        el.style.display = showSnow ? 'default' : 'none';
+    })
+
+    document.getElementById("snowToggle").textContent = showSnow ? 'Hide Snow' : 'Show Snow';
+}
