@@ -1,0 +1,258 @@
+/* Mobile-First Responsive Styles for 2025 Christmas Card */
+
+/* ========================================
+   Base Styles (Mobile First - iPhone optimized)
+   ======================================== */
+
+body {
+    margin: 0;
+    padding: 16px;
+    font-family: 'Arial', sans-serif;
+    background-color: #00274d;
+    color: #000;
+    overflow-x: hidden;
+}
+
+.card {
+    position: relative;
+    margin: 1em auto;
+    padding: 1rem;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* ========================================
+   Typography - Responsive Scaling
+   ======================================== */
+
+.card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5em;
+    color: #ff6347;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 1em 0;
+    line-height: 1.6;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+/* ========================================
+   Images - Mobile: Full Width, No Floats
+   ======================================== */
+
+.image-inline,
+.image-inline-left {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 1em auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Links - Subtle Enhancement
+   ======================================== */
+
+.card a:not(.download-button) {
+    color: #ff6347;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 200ms ease;
+}
+
+.card a:not(.download-button):hover {
+    border-bottom-color: #ff6347;
+}
+
+/* ========================================
+   Button Container - Mobile: Stacked
+   ======================================== */
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2em;
+    align-items: stretch;
+}
+
+/* ========================================
+   Buttons - Consistent Styling
+   ======================================== */
+
+.download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 200ms ease, transform 100ms ease, box-shadow 200ms ease;
+    line-height: 1.5;
+}
+
+.download-button:hover {
+    background-color: #e5533d;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.download-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   Scroll Animation Classes
+   ======================================== */
+
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+.fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-element {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .image-inline,
+    .image-inline-left {
+        transition: none;
+    }
+    
+    .download-button {
+        transition: none;
+    }
+}
+
+/* ========================================
+   Tablet Breakpoint (640px+)
+   ======================================== */
+
+@media (min-width: 640px) {
+    body {
+        padding: 24px;
+    }
+    
+    .card {
+        padding: 1.25rem;
+    }
+    
+    .card h1 {
+        font-size: 2.25rem;
+    }
+    
+    .card p {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        text-align: justify;
+    }
+    
+    /* Images can float again on larger screens */
+    .image-inline {
+        float: right;
+        margin: 0 0 1em 1em;
+        max-width: 40%;
+        width: auto;
+    }
+    
+    .image-inline-left {
+        float: left;
+        margin: 0 1em 1em 0;
+        max-width: 40%;
+        width: auto;
+    }
+    
+    /* Button container side-by-side */
+    .button-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .download-button {
+        width: auto;
+        min-width: 180px;
+    }
+}
+
+/* ========================================
+   Desktop Breakpoint (1024px+)
+   ======================================== */
+
+@media (min-width: 1024px) {
+    body {
+        padding: 40px;
+    }
+    
+    .card {
+        margin: 2em auto;
+        padding: 1.5rem;
+    }
+    
+    .card h1 {
+        font-size: 2.5rem;
+    }
+    
+    .card p {
+        font-size: 1.125rem;
+        line-height: 1.8;
+    }
+    
+    /* Optimal image sizing for desktop */
+    .image-inline,
+    .image-inline-left {
+        max-width: 200px;
+    }
+}
+
+/* ========================================
+   Print Styles (for PDF generation)
+   ======================================== */
+
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        margin: 0;
+    }
+    
+    .download-button {
+        display: none;
+    }
+    
+    .fade-in-element {
+        opacity: 1;
+        transform: none;
+    }
+}
